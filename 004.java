@@ -24,33 +24,30 @@ The median is (2 + 3)/2 = 2.5
 
 class Solution {
     public double findMedianSortedArrays(int[] nums1, int[] nums2) {
-		int[] agg = new int[nums1.length + nums2.length];
+        int n = nums1.length + nums2.length;
+		int[] agg = new int[n];
 		int i = 0;
 		int j = 0;
 		int k = 0;
-		while (i < nums1.length && j < nums2.length) {
-			if (nums1[i] <= nums2[j]) {
-				System.out.println(nums1[i]);
+		while (i < nums1.length && j < nums2.length && k <= n / 2) {
+			if (nums1[i] <= nums2[j]) {				
 				agg[k++] = nums1[i++];
 			}
 			else if (nums1[i] > nums2[j]) {
-				System.out.println(nums2[j]);
 				agg[k++] = nums2[j++];
 			}
 		}
-		while (i < nums1.length) {
-			System.out.println(nums1[i]);
+		while (i < nums1.length && k <= n / 2) {
 			agg[k++] = nums1[i++];
 		}
-		while (j < nums2.length) {
-			System.out.println(nums2[j]);
+		while (j < nums2.length && k <= n / 2) {
 			agg[k++] = nums2[j++];
 		}
 		
 		if ((nums1.length + nums2.length) % 2 == 0) {
-			return ((double)agg[k / 2] + (double)agg[k / 2 - 1]) / 2;			
+			return ((double)agg[n / 2] + (double)agg[n / 2 - 1]) / 2;			
 		} else {
-			return (double) agg[k / 2];
+			return (double) agg[n / 2];
 		}
     }
 }
