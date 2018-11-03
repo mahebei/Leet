@@ -1,2 +1,2 @@
-# My 1st round LeetCode Practice.
+# My LeetCode Practice.
 # Bachelor of Computer Science student.
