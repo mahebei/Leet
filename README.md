@@ -1,3 +1,3 @@
 # My LeetCode Practice.
 # Bachelor of Computer Science student.
-# All programs are submitted and accepted.
+# All programs have been submitted and accepted.
