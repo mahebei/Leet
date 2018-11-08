@@ -28,15 +28,15 @@ A solution set is:
 */
 
 class Solution {
-	public List<List<Integer>> check(int[] candidates, int target, int i, List<List<Integer>> res, List<Integer> item) {
+	public List<List<Integer>> check(int[] candidates, int target, List<List<Integer>> res, List<Integer> item) {
 		if (target == 0) {
 			res.add(new LinkedList<>(item));
 		} else {
-			for (; i < candidates.length; i++) {
+			for (int i = 0; i < candidates.length; i++) {
 				target -= candidates[i];
 				if (target >= 0) {
 					item.add(candidates[i]);
-					res = check(candidates, target, i, res, item);
+					res = check(Arrays.copyOfRange(candidates, i, candidates.length), target, res, item);
 				}
 				target += candidates[i];
 			}
@@ -48,6 +48,6 @@ class Solution {
 	}
 	public List<List<Integer>> combinationSum(int[] candidates, int target) {
 		List<List<Integer>> res = new LinkedList<>();
-		return check(candidates, target, 0, res, new LinkedList<>());
+		return check(candidates, target, res, new LinkedList<>());
 	}
 }
