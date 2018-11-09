@@ -19,12 +19,11 @@ class Solution {
 	public List<List<Integer>> gen(List<List<Integer>> res, List<Integer> item, int[] nums) {
 		if (nums.length == 0) {
 			res.add(new LinkedList<>(item));
-			return res;
 		}
 		for (int i = 0; i < nums.length; i++) {
 			item.add(nums[i]);
 			int[] next = new int[nums.length - 1];
-			System.arraycopy(nums, 0, next, 0, i - 0);
+			System.arraycopy(nums, 0, next, 0, i);
 			System.arraycopy(nums, i + 1, next, i, next.length - i);
 			gen(res, item, next);
 			item.remove(item.size() - 1);
