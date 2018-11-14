@@ -40,13 +40,13 @@ class Solution {
 			nums.add(i);
 			fac *= i;
 		}
-		for (int i = n; i >0; i--) {
+		for (int i = n; i > 0; i--) {
 			fac /= i;
 			index = (k - 1) / fac;
 			res += nums.get(index).toString();
 			nums.remove(index);
 			k = k % fac;
-			if (k ==0){
+			if (k == 0){
 				k += fac;
 			}
 		}
