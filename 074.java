@@ -37,15 +37,10 @@ class Solution {
 		return searchCol(matrix, target, row, l, m);
 	}
 	public int searchRow(int[][] matrix, int target, int l, int h) {
-		if (l == h - 1) {
-			return l;
-		}
+		if (l == h - 1) return l;
 		int m = (l + h) / 2;
-		if (matrix[m][0] <= target) {
-			return searchRow(matrix, target, m, h);
-		} else {
-			return searchRow(matrix, target, l, m);
-		}
+		if (matrix[m][0] <= target) return searchRow(matrix, target, m, h);
+		return searchRow(matrix, target, l, m);
 	}
 	public boolean searchMatrix(int[][] matrix, int target) {
 		if (matrix.length == 0) return false;
