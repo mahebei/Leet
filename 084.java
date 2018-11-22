@@ -15,17 +15,14 @@ Input: [2,1,5,6,2,3]
 Output: 10
 */
 
-
-
 /*
 In this problem, a monoton stack is used, a monoton stack is a "sorted" stack.
-Line 35-36: If the stack is empty or the int to be added is greater than stack.peek(), push it in.
-Line 37-49: Else, pop the stack until empty or the int to be added is greater than stack.peek(), 
+Line 32-33: If the stack is empty or the int to be added is greater than stack.peek(), push it in.
+Line 34-46: Else, pop the stack until empty or the int to be added is greater than stack.peek(), 
 			then check the area of poped ints.
 			Change all poped ints to the one to be added then push them in and push the int in. 
-Line 52-57: Check the area of all ints in the stack.
+Line 49-54: Check the area of all ints in the stack.
 */
-
 
 class Solution {
 	public int largestRectangleArea(int[] heights) {
