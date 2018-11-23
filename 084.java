@@ -17,36 +17,36 @@ Output: 10
 
 /*
 In this problem, a monoton stack is used, a monoton stack is a "sorted" stack.
-Line 32-33: If the stack is empty or the int to be added is greater than stack.peek(), push it in.
-Line 34-46: Else, pop the stack until empty or the int to be added is greater than stack.peek(), 
+Line 33-34: If the stack is empty or the int to be added is greater than stack.peek(), push it in.
+Line 35-45: Else, pop the stack until empty or the int to be added is greater than stack.peek(), 
 			then check the area of poped ints.
 			Change all poped ints to the one to be added then push them in and push the int in. 
 Line 49-54: Check the area of all ints in the stack.
 */
 
 class Solution {
-	public int largestRectangleArea(int[] heights) {
-		int res = 0;
-		Stack<Integer> stack = new Stack<Integer>();
+    public int largestRectangleArea(int[] heights) {
+       int res = 0;
+		Stack<Integer> stack = new Stack<>();
+		int count;
 		for (int i = 0; i < heights.length; i++) {
 			if (stack.isEmpty() || heights[i] >= stack.peek()) {
 				stack.push(heights[i]);
 			} else {
-				List<Integer> pop = new LinkedList<>();
+				count = 0;
 				while (!stack.isEmpty() && stack.peek() > heights[i]) {
-					pop.add(stack.pop());
-				}
-				while (!pop.isEmpty()) {
-					if (pop.get(pop.size() - 1) * pop.size() > res) {
-						res = pop.get(pop.size() - 1) * pop.size();
+					count++;
+					int pop = stack.pop();
+					if (pop * count > res) {
+						res = pop * count;
 					}
-					stack.push(heights[i]);
-					pop.remove(pop.size() - 1);
 				}
-				stack.push(heights[i]);
+				for (int j = 0; j <= count; j++) {
+					stack.push(heights[i]);
+				}
 			}
 		}
-		int count = 0;
+		count = 0;
 		while (!stack.isEmpty()) {
 			int height = stack.pop();
 			count++;
@@ -55,5 +55,5 @@ class Solution {
 			}
 		}
 		return res;
-	}
+    }
 }
