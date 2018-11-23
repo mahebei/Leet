@@ -30,7 +30,6 @@ It's a fibonacci sequence.
 */
 class Solution {
 	public int solve(int n, int[] stairs) {
-		if (n == 0) return 1;
 		if (n < 0) return 0;
 		if (stairs[n] > 0) return stairs[n];
 		stairs[n] += solve(n - 1, stairs);
