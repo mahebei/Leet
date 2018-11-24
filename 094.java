@@ -35,16 +35,15 @@ class Solution {
 	public List<Integer> inorderTraversal(TreeNode root) {
 		//return inorder(root, new LinkedList<>());
 		List<Integer> res = new LinkedList<>();
-		Stack<TreeNode> stack = new Stack<>();
-		while (!stack.isEmpty() || root != null) {
-			if (root != null) {
-				stack.add(root);
-				root = root.left;
-			} else {
-				res.add(stack.peek().val);
-				root = root.right;
-			}
-		}
+        Stack<TreeNode> stack = new Stack<>();
+        while (root != null || !stack.isEmpty()) {
+            while (root != null){
+                stack.add(root);
+                root = root.left;
+            }
+            res.add(stack.peek().val);
+            root = stack.pop().right;
+        }
 		return res;
 	}
 }
