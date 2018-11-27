@@ -30,15 +30,13 @@ return its depth = 3.
  * }
  */
 class Solution {
-	public int traverse(TreeNode root, int depth) {
-		if (root == null) {
-			return depth;
-		}
+	public static int traverse(TreeNode root, int depth) {
+		if (root == null) return depth;
 		depth++;
 		depth = Math.max(traverse(root.left, depth),Math.max(traverse(root.right, depth), depth));
 		return depth;
 	}
-	public int maxDepth(TreeNode root) {
+	public static int maxDepth(TreeNode root) {
 		return traverse(root, 0);
 	}
 }
