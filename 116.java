@@ -46,8 +46,7 @@ After calling your function, the tree should look like:
  */
 public class Solution {
 	public void connect(TreeLinkNode root) {
-		if (root == null) return;
-		if (root.left == null) return;
+		if (root == null || root.left == null) return;
 		root.left.next = root.right;
 		if (root.next != null) root.right.next = root.next.left;
 		connect(root.left);
