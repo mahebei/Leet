@@ -23,15 +23,15 @@ Output: 0
 class Solution {
 	public int findMin(int[] nums) {
 		int min = nums[0];
-		int l = 0, r = nums.length - 1;
+		int l = 0, r = nums.length;
 		while (l < r) {
 			int m = (l + r) / 2;
-			if (nums[m] > nums[l]) {
-				min = Math.min(min, Math.min(nums[l], nums[r]));
+			if (nums[m] >= nums[l]) {
+				min = Math.min(min, nums[l]);
 				l = m + 1;
 			} else {
-				min = Math.min(min, Math.min(nums[m], nums[r]));
-				r = m - 1;
+				min = Math.min(min, nums[m]);
+				r = m;
 			}
 		}
 		return min;
