@@ -24,7 +24,7 @@ Explanation: Buy on day 2 (price = 2) and sell on day 3 (price = 6), profit = 6-
 
 class Solution {
     public int maxProfit(int k, int[] prices) {
-		if (k >= prices.length / 2) {
+		if (k >= prices.length / 2) { //When k >= length / 2, it's big enough to get the most profit.
 			int sum = 0;
 			for (int i = 1; i < prices.length; i++) {
 				if (prices[i] > prices[i - 1]) sum += prices[i] - prices[i - 1];
@@ -35,8 +35,9 @@ class Solution {
 		for (int i = 1; i < k + 1; i++) {
 			int maxBuy = -prices[0];
 			for (int j = 1; j < prices.length; j++) {
+				//Compare max of after finished i transations 1 day before, and finished i-1 transactions then sell at Day j
 				memo[i][j] = Math.max(memo[i][j - 1], maxBuy + prices[j]);
-				maxBuy = Math.max(maxBuy, memo[i - 1][j - 1] - prices[j]);
+				maxBuy = Math.max(maxBuy, memo[i - 1][j - 1] - prices[j]); //Max of after last transaction and buy without sell.
 			}
 		}
 		return memo[k][prices.length - 1];
