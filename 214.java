@@ -14,7 +14,8 @@ Input: "abcd"
 Output: "dcbabcd"
 */
 
-class Solution {	
+class Solution {
+	//https://leetcode.com/problems/shortest-palindrome/discuss/60113/Clean-KMP-solution-with-super-detailed-explanation
 	public int getKMP(String s) {
 		int[] table = new int[s.length()];
 		int index = 0;
