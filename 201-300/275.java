@@ -31,9 +31,10 @@ class Solution {
 		int l = 0, h = citations.length, m, res = 0;
 		while (h > l) {
 			m = (l + h) / 2;
+			if (citations.length - m > citations[m]) l = m + 1;
+			else if (citations.length - m < citations[m]) h = m;
+			else return citations[m];
 			res = Math.max(res, Math.min(citations.length - m, citations[m]));
-			if (citations.length - m >= citations[m]) l = m + 1;
-			else h = m;
 		}
 		return res;
 	}
