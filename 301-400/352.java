@@ -38,12 +38,15 @@ class SummaryRanges {
 	}
 
 	public void addNum(int val) {
+		// val exists
 		if (nums.containsKey(val)) return;
+		// val cannot connected to any current intervals
 		if (!(nums.containsKey(val - 1) || nums.containsKey(val + 1))) {
 			nums.put(val, val);
 			inter.put(val, new Interval(val, val));
 			return;
 		}
+		// val can be connected to its left, its right or both
 		int left = (nums.containsKey(val - 1)) ? nums.get(val - 1) : val;
 		int right = (nums.containsKey(val + 1)) ? inter.get(val + 1).end : val;
 		nums.put(val, left);
