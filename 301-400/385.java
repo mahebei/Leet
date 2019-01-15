@@ -58,11 +58,14 @@ Return a NestedInteger object containing a nested list with 2 elements:
  * }
  */
  
- /*
- There are few situations in the String s.
- if it's a digit, continue;
- if if's '['
- */
+/*
+Traverse the String s, There are few situations in s.
+If it's a digit, continue;
+If it's '[', if it's like "[[", just re-initial curr, if is nums + '[', push nums into stack for later use.
+If it's ']', if it's like "nums]", add the nums to curr, if it's like "]]" do nothing,
+		if stack is not empty ([nums1[nums2]nums3]), nums1 is in stack, curr is [nums2]nums3], take out and add curr after it.
+If it's ',' and it's not following ']' add num before ',' to result. If it's like '],' continue.
+*/
 class Solution {
 	public NestedInteger deserialize(String s) {
 		if (s.isEmpty()) return null;
