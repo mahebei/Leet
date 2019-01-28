@@ -32,6 +32,10 @@ Replace the one 'A' in the middle with 'B' and form "AABBBBA".
 The substring "BBBB" has the longest repeating letters, which is 4.
 */
 
+/*
+Use slinding window to keep current longest substring, when k is enough, right bound ++, else left bound ++.
+Trace the num of most frequent letter, also trace the length of longest substring.
+*/
 class Solution {
 	public int characterReplacement(String s, int k) {
 		int l = 0, r = 0, curr = 0, res = 0;
